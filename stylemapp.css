@@ -60,15 +60,15 @@ button {
     font-size: 18px;
     font-weight: bold;
     border-radius: 30px;
-    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    background: linear-gradient(45deg, #3a0ca3, #4361ee); /* Фиолетово-синий */
     color: white;
-    box-shadow: 0px 4px 15px rgba(255, 140, 0, 0.5);
+    box-shadow: 0px 4px 15px rgba(58, 12, 163, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
     transform: scale(1.1);
-    box-shadow: 0px 8px 20px rgba(255, 140, 0, 0.8);
+    box-shadow: 0px 8px 20px rgba(58, 12, 163, 0.8);
 }
 
 #progress-container {
@@ -78,13 +78,13 @@ button:hover {
     border-radius: 15px;
     margin: 20px auto;
     overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(255, 140, 0, 0.3);
+    box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.3);
 }
 
 #progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #ff8c00, #ff4500);
+    background: linear-gradient(90deg, #3a0ca3, #4361ee);
     transition: width 0.5s ease-in-out;
 }
 
@@ -94,42 +94,42 @@ button:hover {
     margin: 15px auto;
     width: 80%;
     border-radius: 15px;
-    box-shadow: 0px 4px 20px rgba(255, 140, 0, 0.2);
+    box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     transition: transform 0.3s, background 0.3s;
 }
 
 .exercise-card.completed {
-    background: rgba(60, 60, 60, 0.1); /* Темновато-серый фон */
+    background: rgba(60, 60, 60, 0.1);
     transform: scale(1.05);
-    backdrop-filter: blur(10px); /* Очень сильное размытие фона */
+    backdrop-filter: blur(10px);
 }
 
 .exercise-card.completed h3, 
 .exercise-card.completed p {
-    color: rgba(255, 255, 255, 0.4); /* Очень светлый текст с низкой прозрачностью */
-    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Сильное замыливание */
+    color: rgba(255, 255, 255, 0.4);
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
 }
 
 .exercise-card.completed .complete-btn {
-    background: rgba(60, 60, 60, 0.1); /* Темновато-серый фон */
+    background: rgba(60, 60, 60, 0.1);
     cursor: not-allowed;
 }
 
 .exercise-card.completed .complete-btn:hover {
-    background: rgba(60, 60, 60, 0.1); /* Темновато-серый фон */
+    background: rgba(60, 60, 60, 0.1);
     cursor: not-allowed;
-    box-shadow: 0px 4px 15px rgba(255, 140, 0, 0.5);
+    box-shadow: 0px 4px 15px rgba(58, 12, 163, 0.5);
     transform: scale(1.0);
 }
 
 .exercise-card .complete-btn {
-    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    background: linear-gradient(45deg, #3a0ca3, #4361ee);
     transition: background 0.3s ease;
 }
 
 .exercise-card .complete-btn:hover {
-    background: #ff4500; /* Яркий оранжевый для акцентных кнопок */
+    background: #3a0ca3;
 }
 
 #calendar {
@@ -166,4 +166,43 @@ button:hover {
 .day.missed {
     background: linear-gradient(45deg, #ff0000, #cc0033);
     color: white;
+}
+
+/* ОКНО С ИМЕНЕМ */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.popup-content {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.popup input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.popup button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
 }
