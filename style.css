@@ -123,6 +123,7 @@ body {
     padding: 12px 25px;
     font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
     text-decoration: none;
     border-radius: 30px;
     background: linear-gradient(45deg, #ff8000, #ff4500);
