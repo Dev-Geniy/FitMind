@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Выбор пола и сохранение в localStorage
     femaleBtn.addEventListener("click", function () {
         localStorage.setItem("userGender", "female");
-        window.location.href = "appw.html";
+        window.location.href = "indexwapp.html";
     });
 
     maleBtn.addEventListener("click", function () {
         localStorage.setItem("userGender", "male");
-        window.location.href = "appm.html";
+        window.location.href = "indexmapp.html";
     });
 
     // Закрытие окна при клике вне его
