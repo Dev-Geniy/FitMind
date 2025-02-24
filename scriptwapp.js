@@ -326,3 +326,39 @@ function loadWorkout(workout) {
     updateCalendar();
     updateTotalWorkouts();
 });
+
+// ИМЯ =================
+document.addEventListener("DOMContentLoaded", function () {
+    const namePopup = document.getElementById("name-popup");
+    const nameInput = document.getElementById("name-input");
+    const saveNameBtn = document.getElementById("save-name-btn");
+    const userNameSpan = document.getElementById("user-name");
+    const greeting = document.getElementById("greeting");
+
+    if (!namePopup) {
+        console.error("Элемент #name-popup не найден в HTML!");
+        return;
+    }
+
+    // Проверка, есть ли имя в LocalStorage
+    const storedName = localStorage.getItem("userName");
+
+    if (storedName) {
+        userNameSpan.textContent = storedName;
+        greeting.style.display = "block";
+        namePopup.style.display = "none";
+    } else {
+        namePopup.style.display = "flex";
+    }
+
+    // Сохранение имени при нажатии
+    saveNameBtn.addEventListener("click", function () {
+        const name = nameInput.value.trim();
+        if (name) {
+            localStorage.setItem("userName", name);
+            userNameSpan.textContent = name;
+            greeting.style.display = "block";
+            namePopup.style.display = "none";
+        }
+    });
+});
