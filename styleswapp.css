@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1b);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Скрыть только скролл-бар, но оставить возможность прокручивать */
+::-webkit-scrollbar {
+    display: none;
+}
+
+#background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("https://kartinki.pics/pics/uploads/posts/2022-08/1660940246_1-kartinkin-net-p-oboi-fitnes-krasivo-2.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: -2;
+}
+
+/* Затемнение */
+#background-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.6); /* 50% затемнения */
+}
+
+#main-screen, #workout-screen {
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+button {
+    padding: 12px 25px;
+    margin: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff00ff, #a000c0);
+    color: white;
+    box-shadow: 0px 4px 15px rgba(255, 0, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(255, 0, 255, 0.8);
+}
+
+#progress-container {
+    width: 80%;
+    background: rgba(255, 255, 255, 0.1);
+    height: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff0080, #ff00ff);
+    transition: width 0.5s ease-in-out;
+}
+
+.exercise-card {
+    background: rgba(100, 100, 100, 0.7); /* Темновато-серый фон */  
+    padding: 20px;
+    margin: 15px auto;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.exercise-card.completed {
+    background: rgba(60, 60, 60, 0.1); /* Темновато-серый фон */
+    transform: scale(1.05);
+    backdrop-filter: blur(10px); /* Очень сильное размытие фона */
+}
+
+.exercise-card.completed h3, 
+.exercise-card.completed p {
+    color: rgba(255, 255, 255, 0.4); /* Очень светлый текст с низкой прозрачностью */
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Сильное замыливание */
+}
+
+
+.exercise-card.completed .complete-btn {
+    background: rgba(60, 60, 60, 0.1); /* Темновато-серый фон */
+    cursor: not-allowed;
+}
+
+.exercise-card.completed .complete-btn:hover {
+    background: rgba(60, 60, 60, 0.1); /* Темновато-серый фон */
+    cursor: not-allowed;
+    box-shadow: 0px 4px 15px rgba(255, 0, 255, 0.5);
+    transform: scale(1.0);
+}
+
+.exercise-card .complete-btn {
+    background: linear-gradient(45deg, #ff00ff, #a000c0);
+    transition: background 0.3s ease;
+}
+
+.exercise-card .complete-btn:hover {
+    background: #a000c0; /* Бледный оттенок сиреневого для нейтральных кнопок */
+}
+
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.day {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.day:hover {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.day.completed {
+    background: linear-gradient(45deg, #00ff00, #00cc66);
+    color: white;
+}
+
+.day.missed {
+    background: linear-gradient(45deg, #ff0000, #cc0033);
+    color: white;
+}
