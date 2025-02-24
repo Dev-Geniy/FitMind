@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (savedGender) {
         // Если выбор есть, перенаправляем пользователя на нужную страницу
-        window.location.href = savedGender === "female" ? "app.html" : "appm.html";
+        window.location.href = savedGender === "female" ? "https://dev-geniy.github.io/FitMind/indexwapp.html" : "https://dev-geniy.github.io/FitMind/indexmapp.html";
     }
 
     const startButton = document.getElementById("start-button");
@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Выбор пола и сохранение в localStorage
     femaleBtn.addEventListener("click", function () {
         localStorage.setItem("userGender", "female");
-        window.location.href = "indexwapp.html";
+        window.location.href = "https://dev-geniy.github.io/FitMind/indexwapp.html";
     });
 
     maleBtn.addEventListener("click", function () {
         localStorage.setItem("userGender", "male");
-        window.location.href = "indexmapp.html";
+        window.location.href = "https://dev-geniy.github.io/FitMind/indexmapp.html";
     });
 
     // Закрытие окна при клике вне его
