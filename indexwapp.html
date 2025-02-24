@@ -10,6 +10,17 @@
   
     <div id="main-screen">
         <h1>Сегодня <span id="current-date"></span></h1>
+
+<div id="name-popup" class="popup">
+    <div class="popup-content">
+        <h2>Введите ваше имя</h2>
+        <input type="text" id="name-input" placeholder="Ваше имя">
+        <button id="save-name-btn">Подтвердить</button>
+    </div>
+</div>
+
+<h2 id="greeting" style="display: none;">Привет, <span id="user-name"></span>!</h2>
+        
         <h2 id="workout-title"></h2>
         <button id="start-btn">Начать тренировку</button>
         <h3>История тренировок:</h3>
