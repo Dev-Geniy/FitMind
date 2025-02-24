@@ -1,0 +1,34 @@
+<html lang="ru">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренировки</title>
+    <link rel="stylesheet" href="stylemapp.css">
+</head>
+<body>
+  <div id="background-image"></div>
+  
+    <div id="main-screen">
+        <h1>Сегодня <span id="current-date"></span></h1>
+        <h2 id="workout-title"></h2>
+        <button id="start-btn">Начать тренировку</button>
+        <h3>История тренировок:</h3>
+            <h3>Общее количество тренировок: <span id="total-completed">0</span></h3>
+      
+        <div id="calendar"></div>
+        <button id="reset-btn">Сбросить историю</button>
+    </div>
+ 
+    <div id="workout-screen">
+        <h2 id="day-title"></h2>
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div class="exercises"></div>
+        <p id="completion-message" class="hidden">Тренировка завершена...<br><br> Продолжайте в том же духе, заходите завтра!</p>
+        <button id="back-btn">Назад</button>
+    </div>
+  
+    <script src="scriptmapp.js"></script>
+</body>
+</html>
