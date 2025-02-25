@@ -209,7 +209,7 @@ button:hover {
     font-size: 18px;
 }
 
-/* МОДАЛЬНОЕ ОКНО СОВЕТЫ */
+/* МОДАЛЬНОЕ ОКНО С СОВЕТАМИ */
 /* Модальное окно */
 .modal {
     display: none; /* Скрыто по умолчанию */
@@ -225,6 +225,7 @@ button:hover {
     align-items: center;
 }
 
+/* Модальное окно */
 .modal-content {
     background: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон */
     padding: 30px;
@@ -232,7 +233,10 @@ button:hover {
     width: 80%;
     max-width: 700px;
     box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
-    backdrop-filter: blur(10px); /* Эффект размытия фона */
+    backdrop-filter: blur(10px);
+    color: #fff;
+    max-height: 80vh; /* Ограничиваем высоту модального окна */
+    overflow-y: auto; /* Добавляем вертикальную прокрутку */
     transform: scale(1);
     animation: scaleIn 0.5s ease-in-out;
 }
@@ -261,26 +265,6 @@ button:hover {
     color: #a000c0;
 }
 
-/* Стиль для кнопки */
-button {
-    padding: 12px 25px;
-    margin: 15px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ff00ff, #a000c0);
-    color: white;
-    box-shadow: 0px 4px 15px rgba(255, 0, 255, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 8px 20px rgba(255, 0, 255, 0.8);
-}
-
 /* Стили для блоков рекомендаций */
 .recommendation-block {
     margin-bottom: 20px;
@@ -301,10 +285,4 @@ button:hover {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8); /* Светлый текст */
     line-height: 1.6;
-}
-
-/* Прокрутка при необходимости */
-.modal-content {
-    max-height: 80vh;
-    overflow-y: auto;
 }
