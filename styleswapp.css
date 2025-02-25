@@ -208,3 +208,103 @@ button:hover {
     cursor: pointer;
     font-size: 18px;
 }
+
+/* МОДАЛЬНОЕ ОКНО СОВЕТЫ */
+/* Модальное окно */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95); /* Темное полупрозрачное фоновое затемнение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон */
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Эффект размытия фона */
+    transform: scale(1);
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.close {
+    color: #ff00ff;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #a000c0;
+}
+
+/* Стиль для кнопки */
+button {
+    padding: 12px 25px;
+    margin: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff00ff, #a000c0);
+    color: white;
+    box-shadow: 0px 4px 15px rgba(255, 0, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(255, 0, 255, 0.8);
+}
+
+/* Стили для блоков рекомендаций */
+.recommendation-block {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(60, 60, 60, 0.5); /* Полупрозрачный темный фон */
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(255, 0, 255, 0.3);
+}
+
+.recommendation-block h3 {
+    color: #ff00ff; /* Фиолетовый заголовок */
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.recommendation-block p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8); /* Светлый текст */
+    line-height: 1.6;
+}
+
+/* Прокрутка при необходимости */
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
