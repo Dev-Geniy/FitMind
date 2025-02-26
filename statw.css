@@ -227,12 +227,18 @@ h2 {
     animation: unlock 0.5s ease-out forwards;
 }
 
+#user-name {
+    color: #ff007f;
+}
+
 #total-training-days {
-font-size: 34px;
+color: #ff007f;
+font-size: 38px;
   }
 
 #consecutive-days {
-font-size: 34px;
+color: #ff007f;
+font-size: 38px;
   }
 
 .buttons-container {
