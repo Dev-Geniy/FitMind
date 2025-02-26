@@ -218,12 +218,18 @@ h2 {
     animation: unlock 0.5s ease-out forwards;
 }
 
+#user-name {
+    color: #1E90FF; /* синий цвет в формате HEX */
+}
+
 #total-training-days {
-font-size: 34px;
+color: #1E90FF; /* синий цвет в формате HEX */
+font-size: 38px;
   }
 
 #consecutive-days {
-font-size: 34px;
+color: #1E90FF; /* синий цвет в формате HEX */
+font-size: 38px;
   }
 
 /* КНОПКИ НАЗАД И НА ГЛАВНУЮ */
