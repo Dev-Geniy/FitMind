@@ -452,12 +452,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const day = document.createElement('div');
             day.classList.add('day');
             day.textContent = i;
-
+ 
             // Если день завершён (есть в localStorage), добавляем класс 'completed'
             if (completedDays.includes(new Date(today.getFullYear(), today.getMonth(), i).toDateString())) {
                 day.classList.add('completed');
             }
-
+ 
             // Добавляем обработчик клика на каждый день
             day.addEventListener('click', function () {
                 const day = this.textContent;
@@ -504,64 +504,82 @@ document.getElementById('rewards-btn').addEventListener('click', function() {
 });
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Получаем достижения из localStorage
         let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+        const totalTrainingDays = JSON.parse(localStorage.getItem('completedDays')) || [];
 
-        // Функция для разблокировки достижений
+        // Функция для добавления достижений
         function unlockAchievement(key) {
-            // Проверяем, есть ли уже это достижение
             if (!achievements.includes(key)) {
                 achievements.push(key);
-                // Сохраняем обновленный список достижений
                 localStorage.setItem('achievements', JSON.stringify(achievements));
-                // Обновляем достижения на странице наград
                 updateAchievementsOnAwardsPage();
             }
         }
 
-        // Обработчик клика на календарь
-        const calendarElement = document.getElementById('calendar');
-        if (calendarElement) {
-            calendarElement.addEventListener('click', function() {
-                unlockAchievement('google_calendar');
+        // Функция для сохранения информации о тренировке
+        function recordTrainingDay() {
+            const currentDate = new Date().toISOString().split('T')[0]; // Получаем текущую дату в формате yyyy-mm-dd
+            if (!totalTrainingDays.includes(currentDate)) {
+                totalTrainingDays.push(currentDate);
+                localStorage.setItem('completedDays', JSON.stringify(totalTrainingDays));
+            }
+        }
+
+        // Обработчик завершения тренировки
+        const completeButton = document.getElementById('complete-training-btn');
+        if (completeButton) {
+            completeButton.addEventListener('click', function() {
+                recordTrainingDay();
+
+                // Проверяем достижение "первая тренировка"
+                if (totalTrainingDays.length === 1 && !achievements.includes('first_training')) {
+                    unlockAchievement('first_training');
+                }
+
+                // Проверка на достижения по дням тренировки
+                if (totalTrainingDays.length === 3 && !achievements.includes('3_days')) {
+                    unlockAchievement('3_days');
+                }
+                if (totalTrainingDays.length === 7 && !achievements.includes('7_days')) {
+                    unlockAchievement('7_days');
+                }
+                if (totalTrainingDays.length === 14 && !achievements.includes('14_days')) {
+                    unlockAchievement('14_days');
+                }
+                if (totalTrainingDays.length === 30 && !achievements.includes('30_days')) {
+                    unlockAchievement('30_days');
+                }
+
+                updateAchievementsOnAwardsPage(); // Обновляем страницу наград
             });
         }
 
-        // Обработчики кликов по кнопкам социальных сетей
-        const socialButtons = document.querySelectorAll('.social-icon');
-        socialButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                unlockAchievement('shared_social');
+        // Функция для обновления достижений на странице наград
+        function updateAchievementsOnAwardsPage() {
+            achievements.forEach(function(key) {
+                updateAchievement(key);
             });
-        });
-    });
+        }
 
-    // Функция для обновления достижений на странице наград
-    function updateAchievementsOnAwardsPage() {
-        const achievements = JSON.parse(localStorage.getItem('achievements')) || [];
-        achievements.forEach(function(key) {
-            updateAchievement(key);
-        });
-    }
-
-    // Функция для обновления блока достижения
-    function updateAchievement(key) {
-        const card = document.getElementById(key);
-        if (card) {
-            const button = card.querySelector('.complete-btn');
-            if (!achievements.includes(key)) {
-                card.classList.add('locked');
-                if (button) {
-                    button.textContent = 'НЕ ПОЛУЧЕНО';
-                    button.classList.add('locked');
-                }
-            } else {
-                card.classList.remove('locked');
-                card.classList.add('completed');
-                if (button) {
-                    button.textContent = 'ПОЛУЧЕНО';
-                    button.classList.remove('locked');
+        // Функция для обновления блока достижения
+        function updateAchievement(key) {
+            const card = document.getElementById(key);
+            if (card) {
+                const button = card.querySelector('.complete-btn');
+                if (!achievements.includes(key)) {
+                    card.classList.add('locked');
+                    if (button) {
+                        button.textContent = 'НЕ ПОЛУЧЕНО';
+                        button.classList.add('locked');
+                    }
+                } else {
+                    card.classList.remove('locked');
+                    card.classList.add('completed');
+                    if (button) {
+                        button.textContent = 'ПОЛУЧЕНО';
+                        button.classList.remove('locked');
+                    }
                 }
             }
         }
-    }
+    });
