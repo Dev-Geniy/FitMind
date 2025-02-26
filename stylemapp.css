@@ -342,3 +342,20 @@ h2 {
 #current-date  {
     color: #1E90FF; /* синий цвет в формате HEX */
 }
+
+/* Анимация старт кнопки */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Увеличиваем размер кнопки */
+  }
+  100% {
+    transform: scale(1); /* Возвращаем к исходному размеру */
+  }
+}
+
+#start-btn {
+  animation: pulse 3s infinite; /* Применяем анимацию к кнопке */
+}
