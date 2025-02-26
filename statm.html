@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рейтинг и достижения</title>
+    <link rel="stylesheet" href="statm.css">
+</head>
+<body>
+
+    <!-- Фоновое изображение -->
+    <div id="background-image"></div>
+
+    <div id="main-screen">
+        <h1>Рейтинг и достижения</h1>
+
+        <!-- Статистика -->
+        <div class="stats-container">
+            <div class="stat-item">
+                <h2>Всего дней тренировок:</h2>
+                <p id="total-training-days">0</p>
+            </div>
+            <div class="stat-item">
+                <h2>Дней подряд без пропусков:</h2>
+                <p id="consecutive-days">0</p>
+            </div>
+        </div>
+
+        <!-- Достижения -->
+        <h2>Ваши награды:</h2>
+        <div class="achievement-container">
+            <div class="achievement-card" id="first-training">
+                <h3>Первая тренировка</h3> 
+                <p>Поздравляем с первой тренировкой!</p>
+                <button class="complete-btn" disabled>Ещё не получено</button>
+            </div>
+            <div class="achievement-card" id="three-days">
+                <h3>3 дня подряд</h3>
+                <p>Вы не пропустили 3 тренировки подряд!</p>
+                <button class="complete-btn" disabled>Ещё не получено</button>
+            </div>
+            <div class="achievement-card" id="seven-days">
+                <h3>7 дней подряд</h3>
+                <p>Вы не пропустили 7 тренировок подряд!</p>
+                <button class="complete-btn" disabled>Ещё не получено</button>
+            </div>
+            <div class="achievement-card" id="fourteen-days">
+                <h3>14 дней подряд</h3>
+                <p>Отлично! 14 дней подряд!</p>
+                <button class="complete-btn" disabled>Ещё не получено</button>
+            </div>
+            <div class="achievement-card" id="thirty-days">
+                <h3>30 дней подряд</h3>
+                <p>Невероятный результат, 30 дней подряд!</p>
+                <button class="complete-btn" disabled>Получить</button>
+            </div>
+            <div class="achievement-card" id="google-calendar">
+                <h3>Добавление в Google Календарь</h3>
+                <p>Вы добавили тренировку в Google Календарь!</p>
+                <button class="complete-btn" disabled>Получить</button>
+            </div>
+            <div class="achievement-card" id="shared-social">
+                <h3>Поделился в соц. сетях</h3>
+                <p>Вы поделились результатом в соц. сетях!</p>
+                <button class="complete-btn" disabled>Получить</button>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button id="backButton" class="btn">Назад</button>
+            <button id="checkRewardsButton" class="btn">Проверить награды</button>
+        </div>
+
+
+        <!-- Социальные кнопки -->
+        <div class="social-media-buttons">
+            <a href="#" class="social-icon facebook">Facebook</a>
+            <a href="#" class="social-icon twitter">Twitter</a>
+            <a href="#" class="social-icon instagram">Instagram</a>
+            <a href="#" class="social-icon linkedin">LinkedIn</a>
+        </div>
+    </div>
+
+    <script src="statm.js"></script>
+</body>
+</html>
