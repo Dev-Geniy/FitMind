@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тренировки</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="stylemapp.css">
 </head>
 <body>
@@ -22,14 +23,35 @@
 <h2 id="greeting" style="display: none;">Привет, <span id="user-name"></span>! Ну что, ты готов? Сегодня тебя ждёт:</h2>        
         
         <h2 id="workout-title"></h2>
-        <button id="start-btn">Начать тренировку</button>
-        <button id="openModalBtn">Рекомендации</button>
+        <button id="start-btn">
+          <i class="fas fa-play"></i> Начать тренировку
+        </button>
+        <button id="rewards-btn" class="rewards-button">
+            <i class="fas fa-trophy"></i> Мои остижения
+        </button>
+        <button id="openModalBtn">? Рекомендации</button>
+
         <h3>История тренировок:</h3>
             <h3>Общее количество тренировок: <span id="total-completed">0</span></h3>
       
-        <div id="calendar"></div>
+        <div id="calendar"></div> 
         <button id="reset-btn">✖ Сброс</button>
-    </div> 
+
+      <div class="social-media">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://dev-geniy.github.io/FitMind" target="_blank" class="social-icon facebook" title="Поделиться на Facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.x.com/share?url=https://dev-geniy.github.io/FitMind" target="_blank" class="social-icon x" title="Поделиться в X">
+        <i class="fab fa-x"></i> <!-- заменили Twitter на X -->
+    </a>
+    <a href="https://www.instagram.com/?url=https://dev-geniy.github.io/FitMind" target="_blank" class="social-icon instagram" title="Поделиться в Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://dev-geniy.github.io/FitMind&title=My+title&summary=My+summary&source=https://dev-geniy.github.io/FitMind" target="_blank" class="social-icon linkedin" title="Поделиться в LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+  </div>
+</div> 
  
     <div id="workout-screen">
         <h2 id="day-title"></h2>
@@ -37,15 +59,24 @@
             <div id="progress-bar"><span id="progress-text">0%</span></div>
         </div>
         <div class="exercises"></div>
-        <p id="completion-message" class="hidden">Тренировка завершена...<br>Продолжайте в том же духе, заходите завтра!</p>
-        <button id="back-btn">Назад</button>
+
+
+<!-- Модальное окно -->
+<div  id="completion-message" class="hidden">
+        <h2>Поздравляем 🎉</h2>
+        <p>Вы завершили тренировку. Отличная работа!<br>Продолжай в том же духе, заходите завтра!</p>
+</div>
+
+        <button id="back-btn">
+            <i class="fas fa-arrow-left"></i> Назад
+        </button>
     </div>
 
   <!-- Модальное окно -->
 <div id="recommendationsModal" class="modal">
     <div class="modal-content">
         <span id="closeModalBtn" class="close">&times;</span>
-        <h2>Рекомендации и Советы</h2>
+        <h2>Рекомендации</h2>
         
         <!-- Блок 1: Питание и питьё воды -->
         <div class="recommendation-block">
