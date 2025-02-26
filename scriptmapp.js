@@ -436,3 +436,132 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+// КАЛЕНДАРЬ ГУГЛ
+document.addEventListener('DOMContentLoaded', function () {
+    const today = new Date();
+
+    // Функция для обновления календаря
+    function updateCalendar() {
+        const calendar = document.getElementById('calendar');
+        calendar.innerHTML = "";
+        const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+        const completedDays = JSON.parse(localStorage.getItem('completedDays')) || [];
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const day = document.createElement('div');
+            day.classList.add('day');
+            day.textContent = i;
+
+            // Если день завершён (есть в localStorage), добавляем класс 'completed'
+            if (completedDays.includes(new Date(today.getFullYear(), today.getMonth(), i).toDateString())) {
+                day.classList.add('completed');
+            }
+
+            // Добавляем обработчик клика на каждый день
+            day.addEventListener('click', function () {
+                const day = this.textContent;
+                const month = today.getMonth() + 1; // Месяц (в JS месяцы с 0)
+                const year = today.getFullYear();
+
+                // Формируем ссылку для добавления события в Google Календарь
+                const eventTitle = 'Тренировка';  // Заголовок события
+                const eventDescription = 'Завершение тренировки';  // Описание события
+                const eventLocation = 'Онлайн';  // Местоположение (можно изменить)
+                const eventStartTime = new Date(year, month - 1, day, 10, 0);  // Начало события (10:00)
+                const eventEndTime = new Date(year, month - 1, day, 11, 0);  // Конец события (11:00)
+
+                // Преобразуем время в формат, который нужен для Google Календаря
+                const startTime = eventStartTime.toISOString().replace(/-|:|\.\d+/g, '');
+                const endTime = eventEndTime.toISOString().replace(/-|:|\.\d+/g, '');
+
+                const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}&sf=true&output=xml`;
+
+                // Открываем Google Календарь в новом окне с предзаполненными данными
+                window.open(googleCalendarUrl, '_blank');
+
+                // Сохраняем день как завершённый в localStorage
+                const completedDays = JSON.parse(localStorage.getItem('completedDays')) || [];
+                completedDays.push(new Date(today.getFullYear(), today.getMonth(), day).toDateString());
+                localStorage.setItem('completedDays', JSON.stringify(completedDays));
+
+                // Обновляем календарь
+                updateCalendar();
+            });
+
+            // Добавляем день в календарь
+            calendar.appendChild(day);
+        }
+    } 
+ 
+    // Инициализация календаря
+    updateCalendar();
+});
+
+// Д О С Т И Ж Е Н И Я
+document.getElementById('rewards-btn').addEventListener('click', function() {
+    window.location.href = 'statm.html'; // Переход на страницу наград
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Получаем достижения из localStorage
+        let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+
+        // Функция для разблокировки достижений
+        function unlockAchievement(key) {
+            // Проверяем, есть ли уже это достижение
+            if (!achievements.includes(key)) {
+                achievements.push(key);
+                // Сохраняем обновленный список достижений
+                localStorage.setItem('achievements', JSON.stringify(achievements));
+                // Обновляем достижения на странице наград
+                updateAchievementsOnAwardsPage();
+            }
+        }
+
+        // Обработчик клика на календарь
+        const calendarElement = document.getElementById('calendar');
+        if (calendarElement) {
+            calendarElement.addEventListener('click', function() {
+                unlockAchievement('google_calendar');
+            });
+        }
+
+        // Обработчики кликов по кнопкам социальных сетей
+        const socialButtons = document.querySelectorAll('.social-icon');
+        socialButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                unlockAchievement('shared_social');
+            });
+        });
+    });
+
+    // Функция для обновления достижений на странице наград
+    function updateAchievementsOnAwardsPage() {
+        const achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+        achievements.forEach(function(key) {
+            updateAchievement(key);
+        });
+    }
+
+    // Функция для обновления блока достижения
+    function updateAchievement(key) {
+        const card = document.getElementById(key);
+        if (card) {
+            const button = card.querySelector('.complete-btn');
+            if (!achievements.includes(key)) {
+                card.classList.add('locked');
+                if (button) {
+                    button.textContent = 'НЕ ПОЛУЧЕНО';
+                    button.classList.add('locked');
+                }
+            } else {
+                card.classList.remove('locked');
+                card.classList.add('completed');
+                if (button) {
+                    button.textContent = 'ПОЛУЧЕНО';
+                    button.classList.remove('locked');
+                }
+            }
+        }
+    }
