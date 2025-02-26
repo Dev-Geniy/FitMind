@@ -286,3 +286,50 @@ button:hover {
     color: rgba(255, 255, 255, 0.8); /* Светлый текст */
     line-height: 1.6;
 }
+
+/* СОЦ СЕТИ */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #007bff; /* Вы можете поменять цвет по своему вкусу */
+}
+
+.social-icon.facebook:hover {
+    color: #3b5998;
+}
+
+.social-icon.twitter:hover {
+    color: #00acee;
+}
+
+.social-icon.instagram:hover {
+    color: #e4405f;
+}
+
+.social-icon.linkedin:hover {
+    color: #0077b5;
+}
+
+.hidden {
+    display: none;
+}
+
+#user-name {
+    color: #FF69B4; /* розовый цвет в формате HEX */
+}
+
+#current-date {
+    color: #FF69B4; /* розовый цвет в формате HEX */
+}
